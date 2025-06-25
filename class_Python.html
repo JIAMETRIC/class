@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP in Python</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    <style>
+        :root {
+            --primaryColor: #14476c;
+            --secondaryColor: #37c2f1;
+            --tertiaryColor: #666666;
+            --darkColor: #000000;
+            --lightColor: #ffffff;
+            --regularFont: 1.6rem;
+            --headingFont: 4rem;
+            --ffPrimary: "Roboto Condensed", sans-serif;
+            --ffSecondary: "Inter", sans-serif;
+            --border: 1px solid var(--primaryColor);
+            --borderRadius: 0.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--ffSecondary);
+            font-size: 1.6rem; /* Changed from 62.5% to base 16px */
+            line-height: 1.6;
+            color: var(--darkColor);
+            background-color: #f5f5f5;
+            padding: 2rem;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--ffPrimary);
+            margin: 1.5rem 0;
+            color: var(--primaryColor);
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            border-bottom: 2px solid var(--secondaryColor);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 2rem;
+            color: var(--secondaryColor);
+        }
+
+        p {
+            font-size: 1.6rem; /* Increased from 1.1rem */
+            margin: 1rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--lightColor);
+            padding: 3rem;
+            border-radius: var(--borderRadius);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .code-container {
+            position: relative;
+            margin: 1.5rem 0;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 1rem; /* Changed from 10px */
+            right: 1rem; /* Changed from 10px */
+            background: var(--primaryColor);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.6rem; /* Increased padding */
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.4rem; /* Increased from 0.9rem */
+            z-index: 10;
+            transition: all 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: var(--secondaryColor);
+        }
+
+        pre[class*="language-"] {
+            border-radius: var(--borderRadius);
+            margin: 1rem 0;
+            font-size: 1.4rem; /* Increased from 1rem */
+        }
+
+        code:not([class*="language-"]) {
+            background: transparent;
+            padding: 0;
+            color: inherit;
+            font-size: 1.6rem; /* Added base size */
+        }
+
+        .note {
+            background-color: #f8f8f8;
+            border-left: 4px solid var(--secondaryColor);
+            padding: 1.6rem; /* Increased from 1rem */
+            margin: 1.6rem 0; /* Increased from 1rem */
+            font-size: 1.6rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1.6rem; /* Increased from 1rem */
+                font-size: 1.4rem; /* Adjusted for mobile */
+            }
+            
+            .container {
+                padding: 1.6rem; /* Increased from 1.5rem */
+            }
+            
+            h1 {
+                font-size: 2.4rem; /* Increased from 2.2rem */
+            }
+            
+            h2 {
+                font-size: 2rem; /* Increased from 1.8rem */
+            }
+
+            .copy-btn {
+                font-size: 1.2rem; /* Adjusted for mobile */
+                padding: 0.6rem 1.2rem; /* Adjusted for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Object-Oriented Programming (OOP) in Python</h1>
+        
+        <p>OOP is a programming paradigm that organizes software design around objects rather than functions and logic. Python fully supports OOP with its class definitions and object creation syntax.</p>
+        
+        <h2>Core Concepts of OOP</h2>
+        
+        <h3>1. Classes and Objects</h3>
+        <ul>
+            <li><strong>Class</strong>: A blueprint for creating objects</li>
+            <li><strong>Object</strong>: An instance of a class</li>
+        </ul>
+        
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre class="line-numbers"><code class="language-python">class Dog:
+    # Class attribute
+    species = "Canis familiaris"
+    
+    # Initializer / Instance attributes
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    # Instance method
+    def bark(self):
+        return f"{self.name} says woof!"
+
+# Create objects (instances)
+dog1 = Dog("Buddy", 5)
+dog2 = Dog("Milo", 3)
+
+print(dog1.bark())  # Buddy says woof!
+print(dog2.species)  # Canis familiaris</code></pre>
+        </div>
+        
+        <h3>2. The Four Pillars of OOP</h3>
+        
+        <h4>a. Encapsulation</h4>
+        <p>Bundling data and methods that work on that data within one unit (class).</p>
+        
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre class="line-numbers"><code class="language-python">class BankAccount:
+    def __init__(self, account_holder, balance=0):
+        self.account_holder = account_holder
+        self.__balance = balance  # Private attribute
+    
+    def deposit(self, amount):
+        self.__balance += amount
+    
+    def withdraw(self, amount):
+        if amount <= self.__balance:
+            self.__balance -= amount
+        else:
+            print("Insufficient funds")
+    
+    def get_balance(self):
+        return self.__balance
+
+account = BankAccount("Alice", 1000)
+account.deposit(500)
+print(account.get_balance())  # 1500</code></pre>
+        </div>
+        
+        <h4>b. Inheritance</h4>
+        <p>Creating new classes from existing ones.</p>
+        
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre class="line-numbers"><code class="language-python">class Animal:
+    def __init__(self, name):
+        self.name = name
+    
+    def speak(self):
+        raise NotImplementedError("Subclass must implement this method")
+
+class Dog(Animal):
+    def speak(self):
+        return f"{self.name} says woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return f"{self.name} says meow!"
+
+animals = [Dog("Buddy"), Cat("Whiskers")]
+for animal in animals:
+    print(animal.speak())</code></pre>
+        </div>
+        
+        <h4>c. Polymorphism</h4>
+        <p>Using a unified interface for objects of different classes.</p>
+        
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre class="line-numbers"><code class="language-python">class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+    
+    def area(self):
+        return self.width * self.height
+
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+    
+    def area(self):
+        return 3.14 * self.radius ** 2
+
+shapes = [Rectangle(4, 5), Circle(7)]
+for shape in shapes:
+    print(shape.area())</code></pre>
+        </div>
+        
+        <h4>d. Abstraction</h4>
+        <p>Hiding complex implementation details.</p>
+        
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre class="line-numbers"><code class="language-python">from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+    
+    @abstractmethod
+    def perimeter(self):
+        pass
+
+class Square(Shape):
+    def __init__(self, side):
+        self.side = side
+    
+    def area(self):
+        return self.side ** 2
+    
+    def perimeter(self):
+        return 4 * self.side
+
+# shape = Shape()  # This would raise an error
+square = Square(5)
+print(square.area())  # 25</code></pre>
+        </div>
+        
+        <h2>Special Methods (Magic/Dunder Methods)</h2>
+        <p>Python classes can define special methods that allow instances to respond to operators.</p>
+        
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre class="line-numbers"><code class="language-python">class Book:
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+    
+    def __str__(self):
+        return f"{self.title} by {self.author}"
+    
+    def __len__(self):
+        return self.pages
+    
+    def __eq__(self, other):
+        return self.title == other.title and self.author == other.author
+
+book1 = Book("Python Crash Course", "Eric Matthes", 544)
+book2 = Book("Python Crash Course", "Eric Matthes", 544)
+
+print(book1)  # Python Crash Course by Eric Matthes
+print(len(book1))  # 544
+print(book1 == book2)  # True</code></pre>
+        </div>
+        
+        <h2>Class Methods and Static Methods</h2>
+        
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre class="line-numbers"><code class="language-python">class MyClass:
+    class_variable = "I'm a class variable"
+    
+    def __init__(self, value):
+        self.instance_variable = value
+    
+    @classmethod
+    def class_method(cls):
+        print(f"Called class_method of {cls}")
+        print(f"Class variable: {cls.class_variable}")
+    
+    @staticmethod
+    def static_method():
+        print("Called static_method - no access to class or instance")
+
+MyClass.class_method()
+MyClass.static_method()</code></pre>
+        </div>
+        
+        <h2>Property Decorators</h2>
+        <p>Used to define getters, setters, and deleters for instance attributes.</p>
+        
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre class="line-numbers"><code class="language-python">class Temperature:
+    def __init__(self, celsius):
+        self._celsius = celsius
+    
+    @property
+    def celsius(self):
+        return self._celsius
+    
+    @celsius.setter
+    def celsius(self, value):
+        if value < -273.15:
+            raise ValueError("Temperature below absolute zero")
+        self._celsius = value
+    
+    @property
+    def fahrenheit(self):
+        return (self._celsius * 9/5) + 32
+
+temp = Temperature(25)
+print(temp.fahrenheit)  # 77.0
+temp.celsius = 30
+print(temp.fahrenheit)  # 86.0</code></pre>
+        </div>
+        
+        <div class="note">
+            <p>OOP in Python provides a clean way to structure complex programs by creating objects that contain both data and functionality.</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script>
+        // Add copy functionality for all code blocks
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const codeBlock = button.nextElementSibling.querySelector('code');
+                navigator.clipboard.writeText(codeBlock.textContent)
+                    .then(() => {
+                        button.textContent = 'Copied!';
+                        setTimeout(() => {
+                            button.textContent = 'Copy';
+                        }, 2000);
+                    })
+                    .catch(err => {
+                        console.error('Failed to copy: ', err);
+                    });
+            });
+        });
+    </script>
+</body>
+</html>
